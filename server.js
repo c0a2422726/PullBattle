@@ -60,13 +60,30 @@ function randomSpawn() {
 
 //========================
 
+const COLORS = [
+    "#ff4d4d", // 赤
+    "#4d7cff", // 青
+    "#4dff88", // 緑
+    "#ffd54d", // 黄
+    "#ff66ff", // 紫
+    "#66ffff", // 水色
+    "#ff884d", // オレンジ
+    "#ffffff"  // 白
+];
+
+let playerCount = 0;
+
 function createPlayer(id) {
 
     const pos = randomSpawn();
 
-    return {
+    const player = {
 
         id,
+
+        name: "Player " + (playerCount + 1),
+
+        color: COLORS[playerCount % COLORS.length],
 
         x: pos.x,
         y: pos.y,
@@ -81,6 +98,10 @@ function createPlayer(id) {
         respawn: 0
 
     };
+
+    playerCount++;
+
+    return player;
 
 }
 
@@ -359,12 +380,6 @@ function updatePlayers() {
             //----------------
             // ダメージ
             //----------------
-
-            const rvx = b.vx - a.vx;
-            const rvy = b.vy - a.vy;
-
-            const speed = Math.hypot(rvx, rvy);
-
             const speedA = Math.hypot(a.vx, a.vy);
             const speedB = Math.hypot(b.vx, b.vy);
             

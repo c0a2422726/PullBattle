@@ -447,12 +447,23 @@ function drawPlayers(){
             Math.PI * 2
         );
 
-        ctx.fillStyle = "#3b82f6";
+        ctx.fillStyle = p.color;
         ctx.fill();
 
         ctx.strokeStyle = "#ffffff";
         ctx.lineWidth = 2;
         ctx.stroke();
+
+        // 名前
+        ctx.fillStyle = "white";
+        ctx.font = "16px Arial";
+        ctx.textAlign = "center";
+        
+        ctx.fillText(
+            p.name,
+            p.x,
+            p.y - 45
+        );
 
         // HP
         ctx.fillStyle = "#ff0000";
