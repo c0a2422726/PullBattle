@@ -365,15 +365,17 @@ function updatePlayers() {
 
             const speed = Math.hypot(rvx, rvy);
 
-            if (speed > DAMAGE_SPEED) {
-
-                const dmg = Math.floor(
-                    (speed - DAMAGE_SPEED) * DAMAGE_RATE
-                );
-
-                damage(a, dmg);
+            const speedA = Math.hypot(a.vx, a.vy);
+            const speedB = Math.hypot(b.vx, b.vy);
+            
+            if (speedA > speedB && speedA > DAMAGE_SPEED) {
+                const dmg = Math.floor((speedA - DAMAGE_SPEED) * DAMAGE_RATE);
                 damage(b, dmg);
-
+            } else if (speedB > speedA && speedB > DAMAGE_SPEED) {
+                
+                const dmg = Math.floor((speedB - DAMAGE_SPEED) * DAMAGE_RATE);
+                damage(a, dmg);
+            
             }
 
         }
