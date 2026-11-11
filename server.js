@@ -73,7 +73,7 @@ const COLORS = [
 
 let playerCount = 0;
 
-function createPlayer(id) {
+function createPlayer(id, name) {
 
     const pos = randomSpawn();
 
@@ -81,7 +81,7 @@ function createPlayer(id) {
 
         id,
 
-        name: "Player " + (playerCount + 1),
+        name: name || ("Player " + (playerCount + 1)),
 
         color: COLORS[playerCount % COLORS.length],
 
@@ -111,7 +111,10 @@ function createPlayer(id) {
 
 io.on("connection", socket => {
 
-    players[socket.id] = createPlayer(socket.id);
+    players[socket.id] = createPlayer(
+        socket.id,
+        socket.handshake.auth.name
+    );
 
     socket.emit("init", {
 

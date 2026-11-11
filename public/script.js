@@ -4,7 +4,12 @@
 
 const PLAYER_RADIUS = 30;
 
-const socket = io();
+const playerName = prompt("名前を入力して下さい") || "Player";
+const socket = io({
+    auth: {
+        name: playerName
+    }
+});
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
