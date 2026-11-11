@@ -23,7 +23,7 @@ const TICK = 1000 / 60;
 const MAP_WIDTH = 2000;
 const MAP_HEIGHT = 2000;
 
-const PLAYER_RADIUS = 20;
+const PLAYER_RADIUS = 30;
 const PLAYER_HP = 100;
 
 const RESPAWN_TIME = 3000;

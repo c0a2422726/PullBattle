@@ -2,6 +2,8 @@
 // Pull Battle Client
 //==============================
 
+const PLAYER_RADIUS = 30;
+
 const socket = io();
 
 const canvas = document.getElementById("game");
@@ -442,7 +444,7 @@ function drawPlayers(){
         ctx.arc(
             p.x,
             p.y,
-            20,
+            PLAYER_RADIUS,
             0,
             Math.PI * 2
         );
